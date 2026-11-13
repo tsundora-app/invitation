@@ -19,10 +19,17 @@ window.CONFIG = {
     note: "Promis, tu peux aussi me répondre normalement si tu préfères.",
     esquives: 4,                // nombre de fuites avant que le Non devienne cliquable
     // GIFs dans /gifs (< 1 Mo). "" = emoji à la place.
-    gifEsquive: "", emojiEsquive: "😏", messageEsquive: "Hé, pas si vite !",
-    gifOui: "", emojiOui: "🎉", messageOui: "Yes !",
-    gifTriste: "", emojiTriste: "🥺", messageTriste: "Oh...",
+    gifEsquive: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiEsquive: "😏", messageEsquive: "Hé, pas si vite !",
+    gifOui: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiOui: "🎉", messageOui: "Yes !",
+    gifTriste: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiTriste: "🥺", messageTriste: "Oh...",
     dureeGifMs: 1200,
+    // Refus en 4 étapes (utilisées par le prochain moteur). Un GIF par étape.
+    refusEtapes: [
+      { bouton: "Non, merci",        gif: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emoji: "🥺", message: "Oh..." },
+      { bouton: "Non ?",             gif: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emoji: "😢", message: "Vraiment ?" },
+      { bouton: "Vraiment non ?",    gif: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emoji: "😞", message: "Aïe..." },
+      { bouton: "Non, vraiment pas", gif: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emoji: "👋", message: "D'accord." }
+    ],
     refus: {
       titre: "Tu veux quand même voir ce que tu rates ?",
       boutonMontre: "Montre-moi",
@@ -55,7 +62,7 @@ window.CONFIG = {
     { type: "choix", id: "heure", recap: "Heure d'arrivée", titre: "À quelle heure souhaites-tu être reçue ?",
       options: ["19h30", "20h00", "20h30"] },
 
-    { type: "choix", id: "allergies", recap: "Allergies et restrictions", titre: "Avez-vous des allergies ou des restrictions alimentaires ?",
+    { type: "choix", id: "allergies", recap: "Allergies et restrictions", titre: "As-tu des allergies ou des restrictions alimentaires ?",
       options: ["Aucune, je suis prête à prendre des risques.", "Oui, certaines allergies sont à signaler.", "Je préfère éviter certains aliments."],
       reponse: "Ton dossier médical a été examiné avec la plus grande attention. Nous avons décidé de ne pas en tenir compte." },
 
