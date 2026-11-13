@@ -26,7 +26,7 @@ button,input{font:inherit;font-size:16px}
 .btn.principal,.btn.choisi{background:var(--accent);color:var(--accent-texte)}
 .btn:disabled{opacity:.35}
 .btn.suite{margin-top:8px}
-.retour{width:auto;min-height:40px;align-self:flex-start;background:none;padding:0 6px;opacity:.7;font-size:15px}
+.retour{width:auto;min-height:40px;align-self:center;background:none;padding:0 14px;opacity:.6;font-size:14px}
 .prog{display:flex;flex-direction:column;gap:6px;font-size:.85rem;opacity:.75;text-align:center}
 .barre{height:6px;background:var(--neutre);border-radius:3px;overflow:hidden}
 .barre i{display:block;height:100%;background:var(--accent)}
@@ -93,18 +93,18 @@ const fFinal = ecran(el("h1", {className: "tf"}), txt(C.final.texte), txt(C.fina
 
 // ---------- Parcours ----------
 const noeuds = [];
-const Q = C.parcours.filter(e => e.type === "date" || e.type === "choix").length;
+const Q = C.parcours.length;
 let q = 0;
 const suiv = i => () => show(noeuds[i + 1]);
 const retour = i => btn("← Retour", () => show(i === 0 ? accueil : noeuds[i - 1]), "retour");
-const progression = () => { q++; return el("div", {className: "prog"}, `Question ${q}/${Q}`,
+const progression = () => { q++; return el("div", {className: "prog"}, `Étape ${q}/${Q}`,
   el("div", {className: "barre"}, Object.assign(el("i"), {style: `width:${Math.round(q / Q * 100)}%`}))); };
 
 C.parcours.forEach((e, i) => {
   let s;
   if (e.type === "info"){
-    s = ecran(retour(i), e.emoji ? el("div", {className: "emoji", textContent: e.emoji}) : "", el("h1", {textContent: e.titre}),
-      e.sous ? txt(e.sous, "sous") : "", txt(e.texte), btn(e.bouton || "Suivant", suiv(i), "principal suite"));
+    s = ecran(progression(), e.emoji ? el("div", {className: "emoji", textContent: e.emoji}) : "", el("h1", {textContent: e.titre}),
+      e.sous ? txt(e.sous, "sous") : "", txt(e.texte), btn(e.bouton || "Suivant", suiv(i), "principal suite"), retour(i));
   } else if (e.type === "date"){
     lab[e.id] = e.recap; ordre.push(e.id);
     const ok = btn("Continuer", suiv(i), "principal suite"); ok.disabled = true;
@@ -120,7 +120,7 @@ C.parcours.forEach((e, i) => {
         rep[e.id] = d.toLocaleDateString("fr-FR", {weekday: "long", day: "numeric", month: "long"}); ok.disabled = false; };
       g.append(b);
     }
-    s = ecran(retour(i), progression(), el("h1", {textContent: e.titre}), g, txt(e.note, "note"), ok);
+    s = ecran(progression(), el("h1", {textContent: e.titre}), g, txt(e.note, "note"), ok, retour(i));
   } else if (e.type === "choix"){
     lab[e.id] = e.recap; ordre.push(e.id);
     const ok = btn("Continuer", suiv(i), "principal suite"); ok.disabled = true;
@@ -134,7 +134,7 @@ C.parcours.forEach((e, i) => {
       }, "opt");
       return b;
     });
-    s = ecran(retour(i), progression(), el("h1", {textContent: e.titre}), el("div", {className: "liste"}, bs), r, ok);
+    s = ecran(progression(), el("h1", {textContent: e.titre}), el("div", {className: "liste"}, bs), r, ok, retour(i));
   } else if (e.type === "recap"){
     const inp = el("input", {type: "text", placeholder: e.placeholder, autocomplete: "given-name"});
     const lst = el("div", {className: "recap"});
@@ -146,7 +146,7 @@ C.parcours.forEach((e, i) => {
         () => { ok.disabled = false; ok.after(el("p", {className: "erreur", textContent: "L'envoi a échoué, réessaie."})); });
     }, "principal suite");
     ok.disabled = true; inp.oninput = () => ok.disabled = !inp.value.trim();
-    s = ecran(retour(i), el("h1", {textContent: e.titre}), lst, txt(e.labelPrenom, "sous"), inp, ok);
+    s = ecran(progression(), el("h1", {textContent: e.titre}), lst, txt(e.labelPrenom, "sous"), inp, ok, retour(i));
     s.onShow = () => lst.replaceChildren(...ordre.map(k => el("div", {}, el("b", {textContent: lab[k] + " : "}), rep[k] || "-")));
   }
   noeuds.push(s);
