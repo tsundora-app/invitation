@@ -16,13 +16,10 @@ window.CONFIG = {
     texte: "J'ai imaginé un petit menu dégustation aux inspirations thaïlandaises et j'aimerais beaucoup te le faire découvrir.",
     texteOui: "Avec plaisir !",
     texteNon: "Non, merci.",
-    note: "Promis, tu peux aussi me répondre normalement si tu préfères.",
-    esquives: 4,                // nombre de fuites avant que le Non devienne cliquable
+    note: "",
     // GIFs dans /gifs (< 1 Mo). "" = emoji à la place.
-    gifEsquive: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiEsquive: "😏", messageEsquive: "Hé, pas si vite !",
     gifOui: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiOui: "🎉", messageOui: "Yes !",
-    gifTriste: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emojiTriste: "🥺", messageTriste: "Oh...",
-    dureeGifMs: 1200,
+    dureeGifMs: 3000,
     // Refus en 4 étapes (utilisées par le prochain moteur). Un GIF par étape.
     refusEtapes: [
       { bouton: "Non, merci",        gif: "https://media1.tenor.com/m/o_5RQarGvJ0AAAAC/kiss.gif", emoji: "🥺", message: "Oh..." },
