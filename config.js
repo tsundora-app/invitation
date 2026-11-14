@@ -12,8 +12,8 @@ window.CONFIG = {
 
   // ---------- Écran d'accroche + branche du refus ----------
   accroche: {
-    titre: "Ça te dit de dîner chez moi ?",
-    texte: "J'ai imaginé un petit menu dégustation aux inspirations thaïlandaises et j'aimerais beaucoup te le faire découvrir.",
+    titre: "",
+    texte: "J'ai imaginé un petit menu dégustation aux inspirations thaïlandaises et j'aimerais beaucoup te le faire découvrir.\n\nCHONK a déjà donné son approbation. Il ne manque plus qu'une personne pour tester tout ça. Ça te tente ?",
     texteOui: "Avec plaisir !",
     texteNon: "Non, merci.",
     note: "",
@@ -52,18 +52,17 @@ window.CONFIG = {
       texte: "Une parenthèse gourmande et inattendue, pour terminer le repas sur une note originale, réservée aux palais les plus curieux.", bouton: "Suivant" },
 
     { type: "info", image: "photos/chonk.jpg", emoji: "🐈", titre: "CHONK",
-      sous: "Directeur général, maître de la maison, sommelier et inspecteur culinaire.",
-      titreListe: "Ses prérogatives :",
+      sous: "Directeur général, maître de maison, sommelier et inspecteur culinaire.",
       liste: [
         "Validation des préférences alimentaires.",
         "Avis consultatif sur les cuissons.",
         "Surveillance des opérations en cuisine.",
         "Droit de veto sur les décisions qu'il ne comprend pas.",
-        "Goûteur officiel : évaluation des préparations, selon ses exigences personnelles.",
-        "Inspecteur olfactif : contrôle des ingrédients et détection des anomalies suspectes.",
+        "Goûteur officiel : évaluation des préparations selon ses exigences personnelles.",
+        "Inspecteur olfactif : contrôle des ingrédients et détection de toute anomalie suspecte.",
         "Sommelier attitré : sélection et validation des boissons grâce à un odorat particulièrement développé."
       ],
-      fin: "Le maître de la maison se réserve le droit de quitter son poste, de s'endormir en cours de service ou de réclamer une pause sans préavis.",
+      fin: "Le maître de maison se réserve le droit de quitter son poste, de s'endormir en cours de service ou de réclamer une pause sans préavis ni justification.",
       bouton: "Réserver ma table" },
 
     { type: "date", id: "date", recap: "Date", titre: "Quel soir te conviendrait le mieux ?",
